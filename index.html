@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://vjs.zencdn.net/8.16.1/video-js.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/videojs-vr@2.0.0/dist/videojs-vr.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <video
+            id="my-video"
+            class="video-js"
+    >
+        <source src="test.mp4" type="video/mp4" />
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank"
+            >supports HTML5 video</a
+            >
+        </p>
+    </video>
+    <script src="https://vjs.zencdn.net/8.16.1/video.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-vr@2.0.0/dist/videojs-vr.min.js"></script>
+    <script>
+        let vrVideo = videojs('my-video', {
+        controls: true,
+        autoplay: false,
+        preload: 'auto',
+        fluid: true,
+        loop: true,
+    });
+    vrVideo.vr({projection: '360'});
+    </script>
+</body>
+</html>
