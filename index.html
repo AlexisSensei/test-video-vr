@@ -28,17 +28,33 @@
             >
         </p>
     </video>
+    <button id="button-el">Autoriser le gyro</button>
     <script src="https://vjs.zencdn.net/8.16.1/video.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/videojs-vr@2.0.0/dist/videojs-vr.min.js"></script>
     <script>
-        let vrVideo = videojs('my-video', {
+        try {
+            var buttonEl = document.getElementById('button-el');
+            buttonEl.addEventListener('click', function () {
+                DeviceMotionEvent.requestPermission().then(response => {
+                alert('We are get the permission!, response is ' + response);
+                if (response == 'granted') {
+                    window.addEventListener('devicemotion', (e) => {
+                    // do something with e
+                    })
+                }
+            }).catch(alert)
+            });
+            } catch (ex) {
+            alert('eval code err: ' + ex);
+            }
+    let vrVideo = videojs('my-video', {
         controls: true,
         autoplay: false,
         preload: 'auto',
         fluid: true,
         loop: true,
     });
-    vrVideo.vr({projection: '360'});
+    vrVideo.vr({projection: '360', debug: true, forceCardboard: false });
     </script>
 </body>
 </html>
